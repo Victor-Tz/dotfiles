@@ -1,1 +1,0 @@
-/home/vtn/.bash_profile
