@@ -7,85 +7,100 @@
 }
 #custom-power{
   color:@foreground;
-  background-color:transparent;
-
 }
-tooltip,
+tooltip
 tooltip label,
 window
 {
-  color:@color9;
+  color:@color2;
   background-color:@background;
 }
+
+/*waybar empty layaout*/
+
 window#waybar.empty{
   background-color:transparent;
-  border:none;
+  border-bottom: none;
+  transition-property: background-color ,border;
+  transition-duration: 1s;
+
+} 
+window#waybar.empty .modules-left{
+  background-color:@background;
+  border-radius:4;
+ 
 }
 
-window#waybar {
-    background-color: @background;
-    border-bottom: 3px solid @background;
-    transition-property: background-color ,border;
-    transition-duration: 1.5s;
-  }
 
+/*hover dinamict center module*/
 
-  #clock{
+window#waybar.empty .modules-center{
+  background-color:@background;
+  border-radius:4;
+  border:solid 1 @background;
+  padding:0 4;
+  color:@color14
+}
+ window#waybar.empty #clock{
   font-size:18;
   color:@color14;
   background-color:transparent;
 }
+ window#waybar.empty #clock:hover{
+  color:@color12;
+  background-color:transparent;
+}
 
-#idle_inhibitor,
-#backlight,
-#cpu,
-#memory,
-#temperature
+window#waybar.empty #idle_inhibitor,
+window#waybar.empty #backlight,
+window#waybar.empty #cpu,
+window#waybar.empty #memory,
+window#waybar.empty #temperature
 {
   color:@color12;
 }
 
-#clock:hover,
-#idle_inhibitor:hover,
-#backlight:hover,
-#cpu:hover,
-#memory:hover,
-#temperature:hover
+window#waybar.empty  #idle_inhibitor:hover,
+window#waybar.empty  #backlight:hover,
+window#waybar.empty  #cpu:hover,
+window#waybar.empty  #memory:hover,
+window#waybar.empty  #temperature:hover
 {
-  color:@color11;
+  color:@color10;
 }
 
-#tray,
-#network,
-#pulseaudio,
-#battery,
-#battery.charging,
-#power-profiles-daemon,
-#language{
-  color:@color14;
+/*hover dinamict right module*/
+window#waybar.empty .modules-right{
+  background-color:@background;
+  border-radius:4;
+    transition-property: color;
+    transition-duration: .5s;
+ 
+}
+window#waybar.empty   #tray,
+window#waybar.empty   #network,
+window#waybar.empty   #pulseaudio,
+window#waybar.empty   #battery,
+window#waybar.empty   #battery.charging,
+window#waybar.empty   #power-profiles-daemon,
+window#waybar.empty   #language{
+  color:@color9;
     transition-property: color;
     transition-duration: .5s;
 }
 
-#tray:hover,
-#network:hover,
-#pulseaudio:hover,
-#battery:hover,
-#battery.charging:hover,
-#power-profiles-daemon:hover,
-#language:hover{
-  color:@color11;
+window#waybar.empty    #tray:hover,
+window#waybar.empty    #network:hover,
+window#waybar.empty    #pulseaudio:hover,
+window#waybar.empty    #battery:hover,
+window#waybar.empty    #battery.charging:hover,
+window#waybar.empty    #power-profiles-daemon:hover,
+window#waybar.empty    #language:hover{
+  color:@color13;
 }
 
 
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
 
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
 
 button {
     /* Use box-shadow instead of border so the text isn't offset */
@@ -99,34 +114,39 @@ button {
 button:hover {
     background: inherit;
     box-shadow: inset 0 -3px #ffffff;
-    color:@color11;
+    color:@color12;
 }
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
 }
 
+window#waybar {
+    background-color: @background;
+    border-bottom: 3px solid @background;
+    transition-property: background-color ,border;
+    transition-duration: 1s;
+  }
 #workspaces button
 {
     padding: 0 5px;
     background-color: transparent;
-    color:@color12;
+    color:@color11;
 }
 
 #workspaces button:hover
 {
-    color:@color11;
+    color:@color13;
     box-shadow: inset 0 -3px transparent;
 }
 
 #workspaces button.focused {
     box-shadow: inset 0 -3px @color14;
-    color:@color14;
+    color:@color2;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
-    color:@color11;
+    color:@color14;
 }
 
 #mode {
@@ -135,8 +155,152 @@ button:hover {
     box-shadow: inset 0 -3px @color11;
 }
 
+/*waybar solo layaout*/
+window#waybar.solo{
+  background-color:@color1;
+  border-bottom:none;
+    transition-property: background-color ,border;
+    transition-duration: 1s;
+} 
+window#waybar.solo .modules-left{
+  background-color:@background;
+  border-radius:4;
+  padding-right:8;
+ 
+}
+
+window#waybar.solo .modules-center{
+  background-color:@background;
+  border-radius:4;
+  border:solid 1 @background;
+  padding:0 4;
+  color:@color14
+}
+ window#waybar.solo   #clock{
+  font-size:18;
+  color:@color14;
+  background-color:transparent;
+}
+ window#waybar.solo    #clock:hover{
+   color:@color12;
+   background-color:transparent;
+}  
+   
+window#waybar.solo  #idle_inhibitor,
+window#waybar.solo  #backlight,
+window#waybar.solo  #cpu,
+window#waybar.solo  #memory,
+window#waybar.solo  #temperature
+{
+  color:@color12;
+}
+
+window#waybar.solo #idle_inhibitor:hover,
+window#waybar.solo #backlight:hover,
+window#waybar.solo #cpu:hover,
+window#waybar.solo #memory:hover,
+window#waybar.solo #temperature:hover
+{
+  color:@color10;
+}
+
+
+window#waybar.solo .modules-right{
+  background-color:@background;
+  border-radius:4;
+ 
+}
+window#waybar.solo #tray,
+window#waybar.solo #network,
+window#waybar.solo #pulseaudio,
+window#waybar.solo #battery,
+window#waybar.solo #battery.charging,
+window#waybar.solo #power-profiles-daemon,
+window#waybar.solo #language{
+  color:@color2;
+    transition-property: color;
+    transition-duration: .5s;
+}
+
+window#waybar.solo #tray:hover,
+window#waybar.solo #network:hover,
+window#waybar.solo #pulseaudio:hover,
+window#waybar.solo #battery:hover,
+window#waybar.solo #battery.charging:hover,
+window#waybar.solo #power-profiles-daemon:hover,
+window#waybar.solo #language:hover{
+  color:@color14;
+}
+/*normal mode aka 2apps or more*/
+
+window#waybar .modules-left{
+  background-color:@background;
+  border-radius:4;
+  padding-right:8;
+ 
+}
+window#waybar .modules-center{
+  background-color:@background;
+  border-radius:4;
+  border:solid 1 @background;
+  padding:0 4;
+  color:@color2;
+}
+  #clock{
+  font-size:18;
+  color:@color2;
+   background-color:transparent;
+}
+  #clock:hover{
+  color:@color1;
+   background-color:transparent;
+}
+   
+#idle_inhibitor,
+#backlight,
+#cpu,
+#memory,
+#temperature
+{
+  color:@color12;
+}
+
+#idle_inhibitor:hover,
+#backlight:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover
+{
+  color:@color10;
+}
+window#waybar .modules-right{
+  background-color:@background;
+  border-radius:4;
+ 
+}
+window#waybar #tray,
+window#waybar #network,
+window#waybar #pulseaudio,
+window#waybar #battery,
+window#waybar #battery.charging,
+window#waybar #power-profiles-daemon,
+window#waybar #language{
+  color:@color2;
+    transition-property: color;
+    transition-duration: .5s;
+}
+
+window#waybar #tray:hover,
+window#waybar #network:hover,
+window#waybar #pulseaudio:hover,
+window#waybar #battery:hover,
+window#waybar #battery.charging:hover,
+window#waybar #power-profiles-daemon:hover,
+window#waybar #language:hover{
+  color:@color14;
+}
+
 #power,
-#clock,
 #battery,
 #cpu,
 #memory,
@@ -172,10 +336,11 @@ button:hover {
     margin-right: 0;
 }
 
-#clock {
-}
 
 #battery {
+    border-radius: 4;
+    margin:4 2;
+    border:solid 1  @color1;
 }
 
 #battery.charging, #battery.plugged {
@@ -183,8 +348,9 @@ button:hover {
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: @color1;
+        color: @color7;
+
     }
 }
 
@@ -197,6 +363,8 @@ button:hover {
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    border-radius: 18;
+    border:solid 1  @color4;
 }
 
 #power-profiles-daemon {
