@@ -7,49 +7,46 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
+        "custom/power",
         "sway/workspaces",
         "sway/mode",
         "sway/scratchpad",
-        "custom/media"
-    ],
-    "modules-center": [
+        "custom/media",
         "sway/window"
     ],
+    "modules-center": [
+
+        "group/toggles",
+        "clock",
+        "group/hardware"
+    ],
     "modules-right": [
+        "tray",
         "mpd",
-        "idle_inhibitor",
         "pulseaudio",
         "network",
         "power-profiles-daemon",
-        "cpu",
-        "memory",
-        "temperature",
-        "backlight",
         "keyboard-state",
         "sway/language",
         "battery",
-        "battery#bat2",
-        "clock",
-        "tray",
-        "custom/power"
+        "battery#bat2"
     ],
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+     "sway/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "warp-on-scroll": false,
+         "format": "{icon}",
+         "format-icons": {
+             "1": "  ",
+             "2": "  ",
+             "3": "  ",
+             "4": "  ",
+             "5": "  ",
+             "urgent": "  ",
+            // "focused": "  ",
+             "default": "  "
+         }
+     },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -98,22 +95,22 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": " ",
+            "deactivated": " "
         }
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 21,
         "spacing": 10
     },
     "clock": {
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "tooltip-format": " <tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%B}"
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
+        //"tooltip": false
     },
     "memory": {
         "format": "{}% "
@@ -128,7 +125,9 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
+        "format": "{icon}",
+        "tooltip":true,
+        "tooltip-format": "{percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
@@ -201,7 +200,7 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "⏻ ",
+        "format" : "    ",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "/usr/share/waybar/custom_modules/power_menu.xml", // Menu file in resources folder
@@ -211,5 +210,30 @@
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}
-    }
+    },
+    "custom/hider":{"format":"~"},
+  "group/hardware": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": true
+    },
+    "modules": [
+      "custom/hider",
+        "cpu",
+        "memory",
+        "temperature"
+    ]
+}  ,"group/toggles": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/hider",
+      "idle_inhibitor",
+        "backlight"
+    ]
+}    
 }
