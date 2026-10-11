@@ -21,22 +21,34 @@ set $menu rofi -show drun
 include "$HOME/.cache/wal/colors-sway"
 include /etc/sway/config-vars.d/*
 
-exec_always blueman-applet
-exec_always nm-applet
+# applets (tray applications)
+#exec_always blueman-applet
+#exec_always nm-applet
 
+# gaps and opacity
 for_window [class=".*"] opacity 0.96
 gaps inner 2px
 gaps outer 2px
 default_border pixel 2px
 
-set $gnome-schema org.gnome.desktop.interface
+#focus follows mouse
+focus_follows_mouse always
 
+## one tap clicks on touchpad  ## 1267:12735:ELAN0703:00_04F3:31BF_Touchpad
+input "type:touchpad" {
+    tap enabled
+    tap_button_map lrm
+}   
+
+# gtk-theme suport  for gtk-4
+set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Adwaita'
     gsettings set $gnome-schema icon-theme 'yet-another-monochrome-icon-set'
     #gsettings set $gnome-schema cursor-theme 'Your-Cursor-Theme'
     gsettings set $gnome-schema font-name 'Jetbrainsmono 11'
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.wm.preferences focus-mode 'sloppy'
 }
 #Install dependency: pip install i3ipc-python
 #exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.85   
@@ -46,6 +58,8 @@ exec_always {
 # This is commented in Debian, because the Sway wallpaper files are in a separate
 # package `sway-backgrounds`. Installing this package drops a config file to
 # /etc/sway/config.d/
+
+# wallpaper
  output * bg $wallpaper fill
 #
 # Example configuration:
@@ -87,9 +101,10 @@ exec_always {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec brave-browser
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+w kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
@@ -167,7 +182,7 @@ exec_always {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    bindsym $mod+minus layout stacking
     #bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -175,7 +190,7 @@ exec_always {
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+space floating toggle
 
     # Swap focus between the tiling area and the floating area
 
@@ -189,11 +204,11 @@ exec_always {
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+Shift+s move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+s scratchpad show
 #
 # Resizing containers:
 #
@@ -208,7 +223,7 @@ mode "resize" {
     bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
+    bindsym Left lrsize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
@@ -229,6 +244,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
     bindsym Print exec grim
+    bindsym $mod+p exec grim
 
 #
 # Status Bar:
