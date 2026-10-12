@@ -25,7 +25,7 @@
         "mpd",
         "pulseaudio",
         "network",
-        "power-profiles-daemon",
+//        "power-profiles-daemon", // cant get power profiles to work, intel_pstate is on but not working
         "keyboard-state",
         "sway/language",
         "battery",
@@ -163,14 +163,15 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": " ",
         "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{essid} ({signalStrength}%)\n{gwaddr} via {ifname} ",
+        "tooltip-format": "{essid} ({signalStrength}%)\n  {gwaddr} via {ifname}  \n  {ifname}: {ipaddr}/{cidr}  \n\nWi-Fi:\n  Toggle On/Off: Rick-click or nmcli dev up wlo1\n  Scan: Middle-click or nmcli device wifi list\n  Connect: nmcli device wifi connect \"SSID\" password \"PASSWORD\"",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "on-click-right":"nm-connection-editor"
+    "on-click-middle":"nmcli device down wlo1 || nmcli device up wlo1 ",
+    "on-click":"pkill nm-connection-e || nm-connection-editor",
+     "on-click-right":"kitty -e nmcli devic wifi list"
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
+        // "scroll-step": , // %, can be a float
         "format": "{icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -187,7 +188,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pkill pavucontrol || pavucontrol "
     },
     "custom/media": {
         "format": "{icon} {text}",

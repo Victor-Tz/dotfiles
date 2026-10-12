@@ -15,6 +15,9 @@ window
   color:@color2;
   background-color:@background;
 }
+#window{
+  padding-left: 20px;
+}
 
 /*waybar empty layaout*/
 
@@ -84,7 +87,7 @@ window#waybar.empty   #battery,
 window#waybar.empty   #battery.charging,
 window#waybar.empty   #power-profiles-daemon,
 window#waybar.empty   #language{
-  color:@color9;
+  color:@color14;
     transition-property: color;
     transition-duration: .5s;
 }
@@ -96,7 +99,7 @@ window#waybar.empty    #battery:hover,
 window#waybar.empty    #battery.charging:hover,
 window#waybar.empty    #power-profiles-daemon:hover,
 window#waybar.empty    #language:hover{
-  color:@color13;
+  color:@color12;
 }
 
 
@@ -128,32 +131,36 @@ window#waybar {
     transition-duration: 1s;
   }
 #workspaces button
-{
-    padding: 0 5px;
+{   
+  /*this padding centers almost all icons*/
+    padding: 0 8px 0 5px;
     background-color: transparent;
-    color:@color11;
+    color:@color3;
 }
 
-#workspaces button:hover
+#workspaces button:hover,
+#custom-power:hover,
+window
 {
-    color:@color13;
+    color:@color5;
     box-shadow: inset 0 -3px transparent;
 }
-
-#workspaces button.focused {
-    box-shadow: inset 0 -3px @color14;
-    color:@color2;
+#workspaces button.focused
+{
+    box-shadow: inset 0 -3px @color5;
+    color:@color5;
 }
-
 #workspaces button.urgent {
-    color:@color14;
+    color:@background;
+    background-color:@color5;
+    border:solid 1px @background;
 }
+
 
 #mode {
-
-    color:@color11;
-    box-shadow: inset 0 -3px @color11;
+  border: solid 1 @color1
 }
+
 
 /*waybar solo layaout*/
 window#waybar.solo{
@@ -262,7 +269,7 @@ window#waybar .modules-center{
 #memory,
 #temperature
 {
-  color:@color12;
+  color:@color10;
 }
 
 #idle_inhibitor:hover,
@@ -271,7 +278,7 @@ window#waybar .modules-center{
 #memory:hover,
 #temperature:hover
 {
-  color:@color10;
+  color:@color9;
 }
 window#waybar .modules-right{
   background-color:@background;
@@ -297,7 +304,7 @@ window#waybar #battery:hover,
 window#waybar #battery.charging:hover,
 window#waybar #power-profiles-daemon:hover,
 window#waybar #language:hover{
-  color:@color14;
+  color:@color1;
 }
 
 #power,
@@ -481,8 +488,8 @@ label:focus {
 #keyboard-state > label.locked {
     background: rgba(0, 0, 0, 0.2);
 }
-
 #scratchpad {
+  color:@color2;
     background: rgba(0, 0, 0, 0.2);
 }
 

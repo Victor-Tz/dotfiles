@@ -43,6 +43,7 @@ input "type:touchpad" {
 # gtk-theme suport  for gtk-4
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
+    gsettings set org.gnome.desktop.sound allow-volume-above-100-percent false   
     gsettings set $gnome-schema gtk-theme 'Adwaita'
     gsettings set $gnome-schema icon-theme 'yet-another-monochrome-icon-set'
     #gsettings set $gnome-schema cursor-theme 'Your-Cursor-Theme'
@@ -101,13 +102,16 @@ exec_always {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
-    bindsym $mod+Shift+Return exec brave-browser
 
     # Kill focused window
     bindsym $mod+w kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+
+    bindsym $mod+Shift+n  exec kitty -e nvim
+    bindsym $mod+Shift+Return exec brave-browser
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -120,7 +124,7 @@ exec_always {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit' --background   '$background' --text '$foreground' --button-text '$foreground' --button-background '$color1' --button-border '$color1' --border-bottom '$color5'
 #
 # Moving around:
 #
@@ -193,7 +197,8 @@ exec_always {
     bindsym $mod+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-
+    
+    bindsym $mod+Shift+space focus mode_toggle
 
     # Move focus to the parent container
     #bindsym $mod+a focus parent
@@ -238,14 +243,18 @@ bindsym $mod+r mode "resize"
 #
     # Special keys to adjust volume via PulseAudio
     bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioRaiseVolume exec amixer set Master 5%+   
+    bindsym --locked XF86AudioLowerVolume exec amixer set Master 5%-   
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
     bindsym Print exec grim
     bindsym $mod+p exec grim
 
+    bindsym $mod+ctrl+l exec grim ls-background.png &&\
+     magick ls-background.png -blur 0x4 ls-background.png &&\
+     swaylock -i ls-background.png -u &&\
+     rm ls-background.png   
 #
 # Status Bar:
 #
