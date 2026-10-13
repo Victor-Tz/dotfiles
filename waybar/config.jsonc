@@ -17,19 +17,20 @@
     "modules-center": [
 
         "group/toggles",
-        "clock",
         "group/hardware"
     ],
     "modules-right": [
+    "systemd-failed-units",
         "tray",
         "mpd",
         "pulseaudio",
         "network",
 //        "power-profiles-daemon", // cant get power profiles to work, intel_pstate is on but not working
-        "keyboard-state",
-        "sway/language",
+        //"keyboard-state",
+        //"sway/language",
         "battery",
-        "battery#bat2"
+        "battery#bat2",
+        "clock"  
     ],
      "sway/workspaces": {
          "disable-scroll": true,
@@ -58,7 +59,33 @@
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
-    },
+    },"clock": {
+	"format": "{:%I:%M}",
+    "align":0.5,
+	"format-alt": "{:%A, %B %d,(%R)}  ",
+	"tooltip-format": "<tt><small>{calendar}</small></tt>",
+	"calendar": {
+		"mode"          : "month",
+		"mode-mon-col"  : 3,
+		"weeks-pos"     : "right",
+		"on-scroll"     : 1,
+		"on-click-right": "mode",
+		"format": {
+			"months":     "<span color='#ffead3'><b>{}</b></span>",
+			"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+			"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+			"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+			"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+		}
+	},
+	"actions": {
+		"on-click-right": "mode",
+		"on-click-forward": "tz_up",
+		"on-click-backward": "tz_down",
+		"on-scroll-up": "shift_up",
+		"on-scroll-down": "shift_down"
+	}
+},
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
@@ -103,11 +130,6 @@
         "icon-size": 21,
         "spacing": 10
     },
-    "clock": {
-        // "timezone": "america/new_york",
-        "tooltip-format": " <tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%b}"
-    },
     "cpu": {
         "format": "{usage}% ",
         //"tooltip": false
@@ -115,35 +137,53 @@
     "memory": {
         "format": "{}% "
     },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperaturec}°c {icon}",
-        "format": "{temperaturec}°c {icon}",
-        "format-icons": ["", "", ""]
-    },
+     "temperature": {
+	// "thermal-zone": 2,
+	// "hwmon-path": ["/sys/class/hwmon/hwmon2/temp1_input", "/sys/class/thermal/thermal_zone0/temp"],
+	// "critical-threshold": 80,
+	// "format-critical": "{temperatureC}°C ",
+	"format": "{temperatureC}°C "
+},
+  "disk": {
+	"interval": 30,
+	"format": "{specific_free:0.2f} GB / {specific_total:0.2f} GB  .",
+	"unit": "GB"
+	// 1434.25 GB out of 2000.00 GB available. Alternatively 1.4TiB out of 1.9TiB available.
+}
+,
     "backlight": {
         // "device": "acpi_video1",
         "format": "{icon}",
         "tooltip":true,
         "tooltip-format": "{percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
     },
+  "systemd-failed-units": {
+	"hide-on-ok": true,
+	"format": "  ✗ {nr_failed}",
+	"format-ok": "  ✓",
+	"system": true,
+	"user": false,
+},
     "battery": {
         "states": {
-            // "good": 95,
+            "good": 95,
             "warning": 30,
             "critical": 15
-        },
-        "format": "{capacity}% {icon}",
+        },"events": {
+		"on-discharging-warning": "notify-send -u normal 'Low Battery'",
+		//"on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+		"on-charging-100": "notify-send -u normal 'Battery Full!'"
+	},
+    "full-at":90,
+        "format": "{icon}",
         "format-full": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        //"format-alt": "{icon}",
         // "format-good": "", // an empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [" ", " ", " ", " ", " "]
     },
     "battery#bat2": {
         "bat": "bat2"
@@ -160,15 +200,15 @@
       }
     },
     "network": {
-        // "interface": "wlo1", // (optional) to force the use of this interface
+         //"interface": "wlo1", // (optional) to force the use of this interface
         "format-wifi": " ",
-        "format-ethernet": "{ipaddr}/{cidr}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) - {ipaddr}/{cidr}\n\n  toggle on/off: left-click or nmcli dev up wlo1\n  scan: middle-click or nmcli device wifi list\n  connect: nmcli device wifi connect \"ssid\" password \"password\" ",
+        "format-ethernet": "{ipaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) - {ipaddr} /{cidr} \n  toggle on/off: left-click or nmcli dev [up/down] wlo1\n  scan: right-click or nmcli device wifi list\n  connect: nmcli device wifi connect \"ssid\" password \"password\" ",
         "format-linked": "{ifname} (no ip) ",
         "format-disconnected": "disconnected ⚠",
-    "on-click":"nmcli device down wlo1 && nmcli radio wifi off || nmcli device up wlo1 && nmcli radio wifi on",
-    "on-click-right":"pkill nm-connection-e || nm-connection-editor"  ,
-     "on-click-middle":"kitty -e nmcli device wifi list"
+    "on-click":"nmcli device down wlo1 || nmcli device up wlo1 ",
+    "on-click-middle":"",
+     "on-click-right":"kitty -e nmcli device wifi list"
     },
     "pulseaudio": {
         // "scroll-step": , // %, can be a float
@@ -225,7 +265,8 @@
       "custom/hider",
         "cpu",
         "memory",
-        "temperature"
+        "temperature",
+      "disk"
     ]
 }  ,"group/toggles": {
     "orientation": "inherit",

@@ -44,9 +44,9 @@ input "type:touchpad" {
 # gtk-theme suport  for gtk-4
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-   # gsettings set org.gnome.desktop.interface font-name 'Inter 11'
-    #gsettings set org.gnome.desktop.interface document-font-name 'Inter 11'
-    #gsettings set org.gnome.desktop.interface monospace-font-name 'monospace 10'
+    gsettings set org.gnome.desktop.interface font-name 'JetBrainsMonoNLNerdFont-Regular 11'
+    gsettings set org.gnome.desktop.interface document-font-name 'JetBrainsMonoNLNerdFont-Regular 11'
+    gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMonoNLNerdFont-Regular 11'
     #gsettings set org.gnome.desktop.sound allow-volume-above-100-percent false   
    # gsettings set $gnome-schema gtk-theme 'Adwaita'
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'

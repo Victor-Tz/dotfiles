@@ -23,42 +23,45 @@ window
 
 window#waybar.empty{
   background-color:transparent;
-  border-bottom: none;
-  transition-property: background-color ,border;
+  transition-property: background-color ,margin;
   transition-duration: 1s;
 
 } 
 window#waybar.empty .modules-left{
+  margin: 6px 3px;
   background-color:@background;
   border-radius:4;
- 
+  transition-property: margin;
+  transition-duration: 1s;
 }
 
 
 /*hover dinamict center module*/
 
 window#waybar.empty .modules-center{
+  margin: 6px 3px;
   background-color:@background;
-  border-radius:4;
+  border-radius:16;
   border:solid 1 @background;
   padding:0 4;
   color:@color14
 }
  window#waybar.empty #clock{
-  font-size:18;
   color:@color14;
-  background-color:transparent;
+  background-color:@background;
+  border-radius: 16;
+
 }
  window#waybar.empty #clock:hover{
   color:@color12;
-  background-color:transparent;
 }
 
 window#waybar.empty #idle_inhibitor,
 window#waybar.empty #backlight,
 window#waybar.empty #cpu,
 window#waybar.empty #memory,
-window#waybar.empty #temperature
+window#waybar.empty #temperature,
+window#waybar.empty #disk
 {
   color:@color12;
 }
@@ -67,14 +70,16 @@ window#waybar.empty  #idle_inhibitor:hover,
 window#waybar.empty  #backlight:hover,
 window#waybar.empty  #cpu:hover,
 window#waybar.empty  #memory:hover,
-window#waybar.empty  #temperature:hover
+window#waybar.empty  #temperature:hover,
+window#waybar.empty  #disk:hover
 {
   color:@color10;
 }
 
 /*hover dinamict right module*/
 window#waybar.empty .modules-right{
-  background-color:@background;
+  margin: 6px 3px;
+  background-color:transparent;
   border-radius:4;
     transition-property: color;
     transition-duration: .5s;
@@ -126,7 +131,6 @@ button:hover {
 
 window#waybar {
     background-color: @background;
-    border-bottom: 3px solid @background;
     transition-property: background-color ,border;
     transition-duration: 1s;
   }
@@ -164,12 +168,12 @@ window
 
 /*waybar solo layaout*/
 window#waybar.solo{
-  background-color:@color1;
-  border-bottom:none;
+  background-color:transparent;
     transition-property: background-color ,border;
     transition-duration: 1s;
 } 
 window#waybar.solo .modules-left{
+  margin: 6px 3px;
   background-color:@background;
   border-radius:4;
   padding-right:8;
@@ -177,27 +181,25 @@ window#waybar.solo .modules-left{
 }
 
 window#waybar.solo .modules-center{
+  margin: 6px 3px;
   background-color:@background;
   border-radius:4;
-  border:solid 1 @background;
   padding:0 4;
-  color:@color14
+  color:@color12
 }
  window#waybar.solo   #clock{
-  font-size:18;
-  color:@color14;
-  background-color:transparent;
+  color:@color12;
 }
  window#waybar.solo    #clock:hover{
-   color:@color12;
-   background-color:transparent;
+   color:@color14;
 }  
    
 window#waybar.solo  #idle_inhibitor,
 window#waybar.solo  #backlight,
 window#waybar.solo  #cpu,
 window#waybar.solo  #memory,
-window#waybar.solo  #temperature
+window#waybar.solo  #temperature,
+window#waybar.solo  #disk
 {
   color:@color12;
 }
@@ -206,13 +208,15 @@ window#waybar.solo #idle_inhibitor:hover,
 window#waybar.solo #backlight:hover,
 window#waybar.solo #cpu:hover,
 window#waybar.solo #memory:hover,
-window#waybar.solo #temperature:hover
+window#waybar.solo #temperature:hover,
+window#waybar.solo  #disk:hover
 {
   color:@color10;
 }
 
 
 window#waybar.solo .modules-right{
+  margin: 6px 3px;
   background-color:@background;
   border-radius:4;
  
@@ -241,12 +245,14 @@ window#waybar.solo #language:hover{
 /*normal mode aka 2apps or more*/
 
 window#waybar .modules-left{
+  margin:6px 3px;
   background-color:@background;
   border-radius:4;
   padding-right:8;
  
 }
 window#waybar .modules-center{
+  margin:6px 3px;
   background-color:@background;
   border-radius:4;
   border:solid 1 @background;
@@ -254,20 +260,19 @@ window#waybar .modules-center{
   color:@color2;
 }
   #clock{
-  font-size:18;
+  padding:5px 5px 0;
   color:@color2;
-   background-color:transparent;
 }
   #clock:hover{
   color:@color1;
-   background-color:transparent;
 }
    
 #idle_inhibitor,
 #backlight,
 #cpu,
 #memory,
-#temperature
+#temperature,
+#disk
 {
   color:@color10;
 }
@@ -276,11 +281,13 @@ window#waybar .modules-center{
 #backlight:hover,
 #cpu:hover,
 #memory:hover,
-#temperature:hover
+#temperature:hover,
+#disk:hover
 {
   color:@color9;
 }
 window#waybar .modules-right{
+  margin:6px 3px;
   background-color:@background;
   border-radius:4;
  
@@ -307,7 +314,6 @@ window#waybar #language:hover{
   color:@color1;
 }
 
-#power,
 #battery,
 #cpu,
 #memory,
@@ -319,11 +325,20 @@ window#waybar #language:hover{
 #wireplumber,
 #custom-media,
 #tray,
-#mode,
 #idle_inhibitor,
+#power-profiles-daemon
+{
+  background-color:@background;
+  border-radius: 16;
+    padding: 0 10px;
+    transition-property:color,background-color;
+    transition-duration: .5s;
+}
+#power,
+#mode,
 #scratchpad,
-#power-profiles-daemon,
 #mpd {
+    margin: 1px 0;
     padding: 0 10px;
     transition-property:color;
     transition-duration: .5s;
@@ -345,9 +360,7 @@ window#waybar #language:hover{
 
 
 #battery {
-    border-radius: 4;
-    margin:4 2;
-    border:solid 1  @color1;
+  padding-left: 12;
 }
 
 #battery.charging, #battery.plugged {
@@ -474,7 +487,6 @@ label:focus {
     margin: 0 5px;
     min-width: 16px;
 }
-
 #keyboard-state {
     padding: 0 0px;
     margin: 0 5px;
