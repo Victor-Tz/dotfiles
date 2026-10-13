@@ -24,6 +24,7 @@ include /etc/sway/config-vars.d/*
 # applets (tray applications)
 #exec_always blueman-applet
 #exec_always nm-applet
+exec mako
 
 # gaps and opacity
 for_window [class=".*"] opacity 0.96
@@ -43,11 +44,11 @@ input "type:touchpad" {
 # gtk-theme suport  for gtk-4
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set org.gnome.desktop.sound allow-volume-above-100-percent false   
-    gsettings set $gnome-schema gtk-theme 'Adwaita'
-    gsettings set $gnome-schema icon-theme 'yet-another-monochrome-icon-set'
-    #gsettings set $gnome-schema cursor-theme 'Your-Cursor-Theme'
-    gsettings set $gnome-schema font-name 'Jetbrainsmono 11'
+   # gsettings set org.gnome.desktop.interface font-name 'Inter 11'
+    #gsettings set org.gnome.desktop.interface document-font-name 'Inter 11'
+    #gsettings set org.gnome.desktop.interface monospace-font-name 'monospace 10'
+    #gsettings set org.gnome.desktop.sound allow-volume-above-100-percent false   
+   # gsettings set $gnome-schema gtk-theme 'Adwaita'
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
     gsettings set org.gnome.desktop.wm.preferences focus-mode 'sloppy'
 }
@@ -254,7 +255,7 @@ bindsym $mod+r mode "resize"
     bindsym $mod+ctrl+l exec grim ls-background.png &&\
      magick ls-background.png -blur 0x4 ls-background.png &&\
      swaylock -i ls-background.png -u &&\
-     rm ls-background.png   
+     r ls-background.png   
 #
 # Status Bar:
 #
