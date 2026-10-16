@@ -1,36 +1,38 @@
-@import url("/home/vtn/.cache/wal/colors-waybar.css");   
+@import url("/home/vtn/.cache/wal/colors-waybar.css");
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
 }
-#custom-power{
-  color:@foreground;
+
+#custom-power {
+  color: @foreground;
 }
-tooltip
-tooltip label,
-window
-{
-  color:@color2;
-  background-color:@background;
+
+tooltip tooltip label,
+window {
+  color: @color2;
+  background-color: @background;
 }
-#window{
+
+#window {
   padding-left: 20px;
 }
 
 /*waybar empty layaout*/
 
-window#waybar.empty{
-  background-color:transparent;
-  transition-property: background-color ,margin;
+window#waybar.empty {
+  background-color: transparent;
+  transition-property: background-color, margin;
   transition-duration: 1s;
 
-} 
-window#waybar.empty .modules-left{
+}
+
+window#waybar.empty .modules-left {
   margin: 4px 2px;
-  background-color:@background;
-  border-radius:4;
+  background-color: @background;
+  border-radius: 4;
   transition-property: margin;
   transition-duration: 1s;
 }
@@ -38,13 +40,13 @@ window#waybar.empty .modules-left{
 
 /*hover dinamict center module*/
 
-window#waybar.empty .modules-center{
+window#waybar.empty .modules-center {
   margin: 4px 2px;
-  background-color:@background;
-  border-radius:16;
-  border:solid 1 @background;
-  padding:0 4;
-  color:@color14
+  background-color: @background;
+  border-radius: 16;
+  border: solid 1 @background;
+  padding: 0 4;
+  color: @color14
 }
 
 
@@ -53,149 +55,93 @@ window#waybar.empty #backlight,
 window#waybar.empty #cpu,
 window#waybar.empty #memory,
 window#waybar.empty #temperature,
-window#waybar.empty #disk
-{
-  color:@color12;
+window#waybar.empty #disk {
+  transition-property: background-color, margin;
+  transition-duration: 1s;
+  color: @color12;
 }
 
-window#waybar.empty  #idle_inhibitor:hover,
-window#waybar.empty  #backlight:hover,
-window#waybar.empty  #cpu:hover,
-window#waybar.empty  #memory:hover,
-window#waybar.empty  #temperature:hover,
-window#waybar.empty  #disk:hover
-{
-  color:@color10;
+window#waybar.empty #idle_inhibitor:hover,
+window#waybar.empty #backlight:hover,
+window#waybar.empty #cpu:hover,
+window#waybar.empty #memory:hover,
+window#waybar.empty #temperature:hover,
+window#waybar.empty #disk:hover {
+  color: @color10;
 }
 
 /*hover dinamict right module*/
-window#waybar.empty .modules-right{
+window#waybar.empty .modules-right {
   margin: 4px 2px;
-  background-color:transparent;
-  border-radius:4;
-    transition-property: color;
-    transition-duration: .5s;
- 
-}
-window#waybar.empty   #clock,
-window#waybar.empty   #tray,
-window#waybar.empty   #network,
-window#waybar.empty   #pulseaudio,
-window#waybar.empty   #battery,
-window#waybar.empty   #battery.charging,
-window#waybar.empty   #power-profiles-daemon,
-window#waybar.empty   #language{
-  color:@color14;
-    transition-property: color;
-    transition-duration: .5s;
+  background-color: transparent;
+  border-radius: 4;
+  transition-property: color;
+  transition-duration: .5s;
+
 }
 
-window#waybar.empty   #clock:hover,
-window#waybar.empty    #tray:hover,
-window#waybar.empty    #network:hover,
-window#waybar.empty    #pulseaudio:hover,
-window#waybar.empty    #battery:hover,
-window#waybar.empty    #battery.charging:hover,
-window#waybar.empty    #power-profiles-daemon:hover,
-window#waybar.empty    #language:hover{
-  color:@color12;
+window#waybar.empty #clock,
+window#waybar.empty #tray,
+window#waybar.empty #network,
+window#waybar.empty #pulseaudio,
+window#waybar.empty #battery,
+window#waybar.empty #battery.charging,
+window#waybar.empty #power-profiles-daemon,
+window#waybar.empty #language {
+  color: @color14;
+  transition-property: background-color;
+  transition-duration: .5s;
 }
 
-
-
-
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
+window#waybar.empty #clock:hover,
+window#waybar.empty #tray:hover,
+window#waybar.empty #network:hover,
+window#waybar.empty #pulseaudio:hover,
+window#waybar.empty #battery:hover,
+window#waybar.empty #battery.charging:hover,
+window#waybar.empty #power-profiles-daemon:hover,
+window#waybar.empty #language:hover {
+  color: @color12;
 }
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
-    color:@color12;
-}
-
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-}
-
-window#waybar {
-    background-color: @background;
-    transition-property: background-color ,border;
-    transition-duration: 1s;
-  }
-#workspaces button
-{   
-  /*this padding centers almost all icons*/
-    padding: 2px 8px;
-    background-color: transparent;
-    color:@color3;
-}
-
-#workspaces button:hover,
-#custom-power:hover,
-window
-{
-    color:@color5;
-    box-shadow: inset 0 -3px transparent;
-}
-#workspaces button.focused
-{
-    box-shadow: inset 0 -3px @color5;
-    color:@color5;
-}
-#workspaces button.urgent {
-    color:@background;
-    background-color:@color5;
-    border:solid 1px @background;
-}
-
-
-#mode {
-  border: solid 1 @color1
-}
-
 
 /*waybar solo layaout*/
-window#waybar.solo{
-  background-color:transparent;
-    transition-property: background-color ,border;
-    transition-duration: 1s;
-} 
-window#waybar.solo .modules-left{
-  margin: 4px 2px;
-  background-color:@background;
-  border-radius:4;
-  padding-right:8;
- 
+window#waybar.solo {
+  background-color: transparent;
+  transition-property: background-color, border;
+  transition-duration: 1s;
 }
 
-window#waybar.solo .modules-center{
+window#waybar.solo .modules-left {
   margin: 4px 2px;
-  background-color:@background;
-  border-radius:4;
-  padding:0 4;
-  color:@color12
+  background-color: @background;
+  border-radius: 4;
+  padding-right: 8;
+
 }
- window#waybar.solo   #clock{
-  color:@color2;
+
+window#waybar.solo .modules-center {
+  margin: 4px 2px;
+  background-color: @background;
+  border-radius: 4;
+  padding: 0 4;
+  color: @color12
 }
- window#waybar.solo    #clock:hover{
-   color:@color14;
-}  
-   
-window#waybar.solo  #idle_inhibitor,
-window#waybar.solo  #backlight,
-window#waybar.solo  #cpu,
-window#waybar.solo  #memory,
-window#waybar.solo  #temperature,
-window#waybar.solo  #disk
-{
-  color:@color12;
+
+window#waybar.solo #clock {
+  color: @color2;
+}
+
+window#waybar.solo #clock:hover {
+  color: @color14;
+}
+
+window#waybar.solo #idle_inhibitor,
+window#waybar.solo #backlight,
+window#waybar.solo #cpu,
+window#waybar.solo #memory,
+window#waybar.solo #temperature,
+window#waybar.solo #disk {
+  color: @color12;
 }
 
 window#waybar.solo #idle_inhibitor:hover,
@@ -203,28 +149,28 @@ window#waybar.solo #backlight:hover,
 window#waybar.solo #cpu:hover,
 window#waybar.solo #memory:hover,
 window#waybar.solo #temperature:hover,
-window#waybar.solo #disk:hover
-{
-  color:@color10;
+window#waybar.solo #disk:hover {
+  color: @color10;
 }
 
 
-window#waybar.solo .modules-right{
+window#waybar.solo .modules-right {
   margin: 4px 2px;
-  background-color:@background;
-  border-radius:4;
- 
+  background-color: @background;
+  border-radius: 4;
+
 }
+
 window#waybar.solo #tray,
 window#waybar.solo #network,
 window#waybar.solo #pulseaudio,
 window#waybar.solo #battery,
 window#waybar.solo #battery.charging,
 window#waybar.solo #power-profiles-daemon,
-window#waybar.solo #language{
-  color:@color2;
-    transition-property: color;
-    transition-duration: .5s;
+window#waybar.solo #language {
+  color: @color2;
+  transition-property: color;
+  transition-duration: .5s;
 }
 
 window#waybar.solo #tray:hover,
@@ -233,44 +179,47 @@ window#waybar.solo #pulseaudio:hover,
 window#waybar.solo #battery:hover,
 window#waybar.solo #battery.charging:hover,
 window#waybar.solo #power-profiles-daemon:hover,
-window#waybar.solo #language:hover{
-  color:@color14;
+window#waybar.solo #language:hover {
+  color: @color14;
 }
+
 /*normal mode aka 2apps or more*/
 
-window#waybar .modules-left{
-  margin:4px 2px;
-  background-color:@background;
-  border-radius:4;
-  padding-right:8;
- 
+window#waybar .modules-left {
+  margin: 4px 2px;
+  background-color: @background;
+  border-radius: 4;
+  padding-right: 8;
+
 }
-window#waybar .modules-center{
-  margin:4px 2px;
-  background-color:@background;
-  border-radius:4;
-  border:solid 1 @background;
-  padding:0 4;
-  color:@color2;
+
+window#waybar .modules-center {
+  margin: 4px 2px;
+  background-color: @background;
+  border-radius: 4;
+  border: solid 1 @background;
+  padding: 0 4;
+  color: @color2;
 }
-  #clock{
+
+#clock {
   background-color: @background;
   border-radius: 16;
-  padding:5px 5px 0;
-  color:@color2;
+  padding: 5px 5px 0;
+  color: @color2;
 }
-  #clock:hover{
-  color:@color1;
+
+#clock:hover {
+  color: @color1;
 }
-   
+
 #idle_inhibitor,
 #backlight,
 #cpu,
 #memory,
 #temperature,
-#disk
-{
-  color:@color10;
+#disk {
+  color: @color10;
 }
 
 #idle_inhibitor:hover,
@@ -278,26 +227,27 @@ window#waybar .modules-center{
 #cpu:hover,
 #memory:hover,
 #temperature:hover,
-#disk:hover
-{
-  color:@color9;
+#disk:hover {
+  color: @color9;
 }
-window#waybar .modules-right{
-  margin:4px 2px;
-  background-color:@background;
-  border-radius:4;
- 
+
+window#waybar .modules-right {
+  margin: 4px 2px;
+  background-color: @background;
+  border-radius: 4;
+
 }
+
 window#waybar #tray,
 window#waybar #network,
 window#waybar #pulseaudio,
 window#waybar #battery,
 window#waybar #battery.charging,
 window#waybar #power-profiles-daemon,
-window#waybar #language{
-  color:@color2;
-    transition-property: color;
-    transition-duration: .5s;
+window#waybar #language {
+  color: @color2;
+  transition-property: color;
+  transition-duration: .5s;
 }
 
 window#waybar #tray:hover,
@@ -306,8 +256,8 @@ window#waybar #pulseaudio:hover,
 window#waybar #battery:hover,
 window#waybar #battery.charging:hover,
 window#waybar #power-profiles-daemon:hover,
-window#waybar #language:hover{
-  color:@color1;
+window#waybar #language:hover {
+  color: @color1;
 }
 
 #battery,
@@ -322,197 +272,172 @@ window#waybar #language:hover{
 #custom-media,
 #tray,
 #idle_inhibitor,
-#power-profiles-daemon
-{
-  background-color:@background;
+#power-profiles-daemon {
+  background-color: @background;
   border-radius: 16;
-    padding: 0 10px;
-    transition-property:color,background-color;
-    transition-duration: .5s;
+  padding: 0 10px;
+  transition-property: color, background-color;
+  transition-duration: .5s;
 }
+
 #power,
 #mode,
 #scratchpad,
 #mpd {
-    margin: 1px 0;
-    padding: 0 10px;
-    transition-property:color;
-    transition-duration: .5s;
+  margin: 1px 0;
+  padding: 0 10px;
+  transition-property: color;
+  transition-duration: .5s;
 }
 
 #workspaces {
-    margin: 0 4px;
+  margin: 0 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+.modules-left>widget:first-child>#workspaces {
+  margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+.modules-right>widget:last-child>#workspaces {
+  margin-right: 0;
+}
+
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+  background: inherit;
+  box-shadow: inset 0 -3px #ffffff;
+  color: @color12;
 }
 
 
-#battery {
+window#waybar {
+  background-color: @background;
+  transition-property: background-color, border;
+  transition-duration: 1s;
 }
 
-#battery.charging, #battery.plugged {
+#workspaces button {
+  /*this padding centers almost all icons*/
+  padding: 2px 8px;
+  background-color: transparent;
+  color: @color3;
 }
+
+#workspaces button:hover,
+#custom-power:hover,
+window {
+  color: @color5;
+  box-shadow: inset 0 -3px transparent;
+}
+
+#workspaces button.focused {
+  box-shadow: inset 0 -3px @color5;
+  color: @color5;
+}
+
+#workspaces button.urgent {
+  color: @background;
+  background-color: @color5;
+  border: solid 1px @background;
+}
+
+
+#mode {
+  border: solid 1 @color1
+}
+
+#battery.charging,
+#battery.plugged {}
 
 @keyframes blink {
-    to {
-        background-color: @color1;
-        color: @color7;
+  to {
+    background-color: @color1;
+    color: @color7;
 
-    }
+  }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  background-color: #f53c3c;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #power-profiles-daemon {
-    padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
-}
-
-#power-profiles-daemon.balanced {
-}
-
-#power-profiles-daemon.power-saver {
+  padding-right: 15px;
 }
 
 label:focus {
-    background-color: @background;
+  background-color: @background;
 }
-
-#cpu {
-}
-
-#memory {
-}
-
-#disk {
-}
-
-#backlight {
-}
-
 
 #network.disconnected {
-    color: #f53c3c;
+  color: #f53c3c;
 }
 
-#pulseaudio {
-}
-
-#pulseaudio.muted {
-}
-
-#wireplumber {
-}
-
-#wireplumber.muted {
-}
-
-#custom-media {
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-}
-
-#custom-media.custom-vlc {
-}
-
-#temperature {
-}
 
 #temperature.critical {
-    background-color: #eb4d4b;
+  background-color: #eb4d4b;
 }
 
-#tray {
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
 }
 
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
-}
-
-#idle_inhibitor {
-}
-
-#idle_inhibitor.activated {
-}
-
-#mpd {
-}
-
-#mpd.disconnected {
-}
-
-#mpd.stopped {
-}
-
-#mpd.paused {
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
 }
 
 #language {
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
+  padding: 0 5px;
+  margin: 0 5px;
+  min-width: 16px;
 }
+
 #keyboard-state {
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
 }
 
-#keyboard-state > label {
-    padding: 0 5px;
+#keyboard-state>label {
+  padding: 0 5px;
 }
 
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+#keyboard-state>label.locked {
+  background: rgba(0, 0, 0, 0.2);
 }
+
 #scratchpad {
-  color:@color2;
-    background: rgba(0, 0, 0, 0.2);
+  color: @color2;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 #privacy {
-    padding: 0;
+  padding: 0;
 }
 
 #privacy-item {
-    padding: 0 5px;
-}
-
-#privacy-item.screenshare {
-}
-
-#privacy-item.audio-in {
-}
-
-#privacy-item.audio-out {
+  padding: 0 5px;
 }

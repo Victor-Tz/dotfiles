@@ -15,7 +15,6 @@
     "sway/window"
   ],
   "modules-center": [
-
     "group/toggles",
     "custom/cliamp",
     "group/hardware"
@@ -31,7 +30,7 @@
     //"sway/language",
     "battery",
     "battery#bat2",
-    "clock"  
+    "clock"
   ],
   "sway/workspaces": {
     "disable-scroll": true,
@@ -60,23 +59,24 @@
   },
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
-  },"clock": {
+  },
+  "clock": {
     "format": "{:%I:%M}",
-    "align":0.5,
+    "align": 0.5,
     "format-alt": "{:%A, %B %d,(%R)}  ",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
-      "mode"          : "month",
-      "mode-mon-col"  : 3,
-      "weeks-pos"     : "right",
-      "on-scroll"     : 1,
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
       "on-click-right": "mode",
       "format": {
-        "months":     "<span color='#ffead3'><b>{}</b></span>",
-        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
     },
     "actions": {
@@ -90,7 +90,10 @@
   "sway/scratchpad": {
     "format": "{icon} {count}",
     "show-empty": false,
-    "format-icons": ["", ""],
+    "format-icons": [
+      "",
+      ""
+    ],
     "tooltip": true,
     "tooltip-format": "{app}: {title}"
   },
@@ -140,7 +143,7 @@
     "spacing": 10
   },
   "cpu": {
-    "format": "{usage}% ",
+    "format": "{usage}% "
     //"tooltip": false
   },
   "memory": {
@@ -158,21 +161,30 @@
     "format": "{specific_free:0.2f} GB / {specific_total:0.2f} GB  .",
     "unit": "GB"
     // 1434.25 GB out of 2000.00 GB available. Alternatively 1.4TiB out of 1.9TiB available.
-  }
-  ,
+  },
   "backlight": {
     // "device": "acpi_video1",
     "format": "{icon}",
-    "tooltip":true,
+    "tooltip": true,
     "tooltip-format": "{percent}%",
-    "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ]
   },
   "systemd-failed-units": {
     "hide-on-ok": true,
     "format": "  ✗ {nr_failed}",
     "format-ok": "  ✓",
     "system": true,
-    "user": false,
+    "user": false
   },
   "battery": {
     "states": {
@@ -185,7 +197,7 @@
       //"on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
       "on-charging-100": "notify-send -u normal 'Battery Full!'"
     },
-    "full-at":90,
+    "full-at": 90,
     "format": "{icon}",
     "format-full": "{capacity}% {icon}",
     "format-charging": "{capacity}% ",
@@ -193,7 +205,13 @@
     "format-alt": "{capacity}% {icon}",
     // "format-good": "", // an empty format will hide the module
     // "format-full": "",
-    "format-icons": [" ", " ", " ", " ", " "], 
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ],
     "tooltip": true,
     "tooltip-format": "{capacity}% Discharging ",
     "tooltip-format-full": "{capacity}% Full",
@@ -220,9 +238,9 @@
     "tooltip-format-wifi": "{essid} ({signalStrength}%) - {ipaddr} /{cidr} \n  toggle on/off: left-click or nmcli dev [up/down] wlo1\n  scan: right-click or nmcli device wifi list\n  connect: nmcli device wifi connect \"ssid\" password \"password\" ",
     "format-linked": "{ifname} (no ip) ",
     "format-disconnected": "disconnected ⚠",
-    "on-click":"(nmcli device down wlo1 && notify-send -t 1000 'wi-fi off') || (nmcli device up wlo1 && notify-send -t 1000 'wi-fi on')",
-    "on-click-middle":"",
-    "on-click-right":"kitty -e nmtui"
+    "on-click": "(nmcli device down wlo1 && notify-send -t 1000 'wi-fi off') || (nmcli device up wlo1 && notify-send -t 1000 'wi-fi on')",
+    "on-click-middle": "",
+    "on-click-right": "kitty -e nmtui"
   },
   "pulseaudio": {
     // "scroll-step": , // %, can be a float
@@ -232,7 +250,7 @@
     "format-muted": " x {format_source}",
     "format-source": " ",
     "format-source-muted": "",
-    "tooltip-format":"{volume}% {icon}",
+    "tooltip-format": "{volume}% {icon}",
     "format-icons": {
       "headphone": "",
       "hands-free": "",
@@ -240,7 +258,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
     "on-click": "pkill pavucontrol || pavucontrol "
   },
@@ -257,7 +279,7 @@
     // "exec": "$home/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // filter player based on name
   },
   "custom/power": {
-    "format" : "   ",
+    "format": "   ",
     "tooltip": false,
     "menu": "on-click",
     "menu-file": "/usr/share/waybar/custom_modules/power_menu.xml", // menu file in resources folder
@@ -268,7 +290,9 @@
       "hibernate": "systemctl hibernate"
     }
   },
-  "custom/hider":{"format":"~"},
+  "custom/hider": {
+    "format": "~"
+  },
   "group/hardware": {
     "orientation": "inherit",
     "drawer": {
@@ -282,7 +306,8 @@
       "temperature",
       "disk"
     ]
-  }  ,"group/toggles": {
+  },
+  "group/toggles": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 500,
@@ -293,5 +318,5 @@
       "idle_inhibitor",
       "backlight"
     ]
-  }    
+  }
 }

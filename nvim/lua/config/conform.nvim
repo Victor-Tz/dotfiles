@@ -1,0 +1,26 @@
+return {
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        -- Define formatters for specific file types
+        python = { "black" },
+        javascript = { "prettier" },
+        lua = { "stylua" },
+        sh = { "shfmt" },
+      },
+      -- Optional: Add extra arguments or conditions for specific formatters
+      formatters = {
+        black = {
+          prepend_args = { "--fast" },
+        },
+        prettier = {
+          condition = function(ctx)
+            -- Only use prettier if a config file exists
+            return vim.fs.find({ "package.json", ".prettierrc" }, { path = ctx.filename, upward = true })[1]
+          end,
+        },
+      },
+    },
+  },
+}
