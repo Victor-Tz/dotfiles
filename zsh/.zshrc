@@ -36,3 +36,7 @@ export FZF_ALT_C_OPTS="
 
 [[ -f $ZDOTDIR/prompt.zsh ]] && . $ZDOTDIR/prompt.zsh   
 
+[[ -f $ZDOTDIR/plugins.zsh ]] && . $ZDOTDIR/plugins.zsh   
+
+# load prompt
+eval "$(starship init zsh)"
