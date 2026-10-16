@@ -74,7 +74,7 @@ exec_always {
 #
 # Example configuration:
 #
-# exec swayidle -w \
+# exec sway)idle -w \
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 #          before-sleep 'swaylock -f -c 000000'
@@ -113,6 +113,10 @@ exec_always {
 
     bindsym $mod+Shift+n  exec kitty -e nvim
     bindsym $mod+Shift+Return exec brave-browser
+    bindsym $mod+Shift+m exec kitty -e cliamp
+    bindsym $mod+Shift+t exec kitty -e btop
+    bindsym $mod+Shift+y exec brave-browser --app=https://www.youtube.com
+
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -246,12 +250,17 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
     bindsym --locked XF86AudioRaiseVolume exec amixer set Master 5%+   
     bindsym --locked XF86AudioLowerVolume exec amixer set Master 5%-   
+    #bindsym --locked XF86AudioPlay exec  kitty cliamp toggle 
+    #bindsym --locked XF86AudioNext exec  kitty claimp next
+    #bindsym --locked XF86AudioPrev exec  kitty  cliamp prev 
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym $mod+period exec makoctl dismiss -a
+    bindsym $mod+backspace exec makoctl dismiss -a
     # Special key to take a screenshot with grim
     bindsym Print exec grim
     bindsym $mod+p exec grim
-
+    #screen-lock with screenblur
     bindsym $mod+ctrl+l exec grim ls-background.png &&\
      magick ls-background.png -blur 0x4 ls-background.png &&\
      swaylock -i ls-background.png -u &&\

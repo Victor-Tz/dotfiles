@@ -28,7 +28,7 @@ window#waybar.empty{
 
 } 
 window#waybar.empty .modules-left{
-  margin: 6px 3px;
+  margin: 4px 2px;
   background-color:@background;
   border-radius:4;
   transition-property: margin;
@@ -39,22 +39,14 @@ window#waybar.empty .modules-left{
 /*hover dinamict center module*/
 
 window#waybar.empty .modules-center{
-  margin: 6px 3px;
+  margin: 4px 2px;
   background-color:@background;
   border-radius:16;
   border:solid 1 @background;
   padding:0 4;
   color:@color14
 }
- window#waybar.empty #clock{
-  color:@color14;
-  background-color:@background;
-  border-radius: 16;
 
-}
- window#waybar.empty #clock:hover{
-  color:@color12;
-}
 
 window#waybar.empty #idle_inhibitor,
 window#waybar.empty #backlight,
@@ -78,13 +70,14 @@ window#waybar.empty  #disk:hover
 
 /*hover dinamict right module*/
 window#waybar.empty .modules-right{
-  margin: 6px 3px;
+  margin: 4px 2px;
   background-color:transparent;
   border-radius:4;
     transition-property: color;
     transition-duration: .5s;
  
 }
+window#waybar.empty   #clock,
 window#waybar.empty   #tray,
 window#waybar.empty   #network,
 window#waybar.empty   #pulseaudio,
@@ -97,6 +90,7 @@ window#waybar.empty   #language{
     transition-duration: .5s;
 }
 
+window#waybar.empty   #clock:hover,
 window#waybar.empty    #tray:hover,
 window#waybar.empty    #network:hover,
 window#waybar.empty    #pulseaudio:hover,
@@ -137,7 +131,7 @@ window#waybar {
 #workspaces button
 {   
   /*this padding centers almost all icons*/
-    padding: 0 8px 0 5px;
+    padding: 2px 8px;
     background-color: transparent;
     color:@color3;
 }
@@ -173,7 +167,7 @@ window#waybar.solo{
     transition-duration: 1s;
 } 
 window#waybar.solo .modules-left{
-  margin: 6px 3px;
+  margin: 4px 2px;
   background-color:@background;
   border-radius:4;
   padding-right:8;
@@ -181,14 +175,14 @@ window#waybar.solo .modules-left{
 }
 
 window#waybar.solo .modules-center{
-  margin: 6px 3px;
+  margin: 4px 2px;
   background-color:@background;
   border-radius:4;
   padding:0 4;
   color:@color12
 }
  window#waybar.solo   #clock{
-  color:@color12;
+  color:@color2;
 }
  window#waybar.solo    #clock:hover{
    color:@color14;
@@ -209,14 +203,14 @@ window#waybar.solo #backlight:hover,
 window#waybar.solo #cpu:hover,
 window#waybar.solo #memory:hover,
 window#waybar.solo #temperature:hover,
-window#waybar.solo  #disk:hover
+window#waybar.solo #disk:hover
 {
   color:@color10;
 }
 
 
 window#waybar.solo .modules-right{
-  margin: 6px 3px;
+  margin: 4px 2px;
   background-color:@background;
   border-radius:4;
  
@@ -245,14 +239,14 @@ window#waybar.solo #language:hover{
 /*normal mode aka 2apps or more*/
 
 window#waybar .modules-left{
-  margin:6px 3px;
+  margin:4px 2px;
   background-color:@background;
   border-radius:4;
   padding-right:8;
  
 }
 window#waybar .modules-center{
-  margin:6px 3px;
+  margin:4px 2px;
   background-color:@background;
   border-radius:4;
   border:solid 1 @background;
@@ -260,6 +254,8 @@ window#waybar .modules-center{
   color:@color2;
 }
   #clock{
+  background-color: @background;
+  border-radius: 16;
   padding:5px 5px 0;
   color:@color2;
 }
@@ -287,7 +283,7 @@ window#waybar .modules-center{
   color:@color9;
 }
 window#waybar .modules-right{
-  margin:6px 3px;
+  margin:4px 2px;
   background-color:@background;
   border-radius:4;
  
@@ -360,7 +356,6 @@ window#waybar #language:hover{
 
 
 #battery {
-  padding-left: 12;
 }
 
 #battery.charging, #battery.plugged {
@@ -383,8 +378,6 @@ window#waybar #language:hover{
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    border-radius: 18;
-    border:solid 1  @color4;
 }
 
 #power-profiles-daemon {
@@ -416,8 +409,6 @@ label:focus {
 #backlight {
 }
 
-#network {
-}
 
 #network.disconnected {
     color: #f53c3c;
