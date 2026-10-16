@@ -83,6 +83,7 @@ window#waybar.empty .modules-right {
 window#waybar.empty #clock,
 window#waybar.empty #tray,
 window#waybar.empty #network,
+window#waybar.empty #bluetooth,
 window#waybar.empty #pulseaudio,
 window#waybar.empty #battery,
 window#waybar.empty #battery.charging,
@@ -96,6 +97,7 @@ window#waybar.empty #language {
 window#waybar.empty #clock:hover,
 window#waybar.empty #tray:hover,
 window#waybar.empty #network:hover,
+window#waybar.empty #bluetooth:hover,
 window#waybar.empty #pulseaudio:hover,
 window#waybar.empty #battery:hover,
 window#waybar.empty #battery.charging:hover,
@@ -163,6 +165,7 @@ window#waybar.solo .modules-right {
 
 window#waybar.solo #tray,
 window#waybar.solo #network,
+window#waybar.solo #bluetooth,
 window#waybar.solo #pulseaudio,
 window#waybar.solo #battery,
 window#waybar.solo #battery.charging,
@@ -175,6 +178,7 @@ window#waybar.solo #language {
 
 window#waybar.solo #tray:hover,
 window#waybar.solo #network:hover,
+window#waybar.solo #bluetooth:hover,
 window#waybar.solo #pulseaudio:hover,
 window#waybar.solo #battery:hover,
 window#waybar.solo #battery.charging:hover,
@@ -240,6 +244,7 @@ window#waybar .modules-right {
 
 window#waybar #tray,
 window#waybar #network,
+window#waybar #bluetooth,
 window#waybar #pulseaudio,
 window#waybar #battery,
 window#waybar #battery.charging,
@@ -252,6 +257,7 @@ window#waybar #language {
 
 window#waybar #tray:hover,
 window#waybar #network:hover,
+window#waybar #bluetooth:hover,
 window#waybar #pulseaudio:hover,
 window#waybar #battery:hover,
 window#waybar #battery.charging:hover,
@@ -260,6 +266,7 @@ window#waybar #language:hover {
   color: @color1;
 }
 
+#bluetooth,
 #battery,
 #cpu,
 #memory,

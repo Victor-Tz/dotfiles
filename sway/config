@@ -22,8 +22,8 @@ include "$HOME/.cache/wal/colors-sway"
 include /etc/sway/config-vars.d/*
 
 # applets (tray applications)
-#exec_always blueman-applet
 #exec_always nm-applet
+exec_always blueman-applet
 exec mako
 
 # gaps and opacity

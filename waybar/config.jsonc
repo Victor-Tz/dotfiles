@@ -22,7 +22,7 @@
   "modules-right": [
     "systemd-failed-units",
     "tray",
-    "custom/cliamp",
+    "bluetooth",
     "pulseaudio",
     "network",
     //        "power-profiles-daemon", // cant get power profiles to work, intel_pstate is on but not working
@@ -241,6 +241,17 @@
     "on-click": "(nmcli device down wlo1 && notify-send -t 1000 'wi-fi off') || (nmcli device up wlo1 && notify-send -t 1000 'wi-fi on')",
     "on-click-middle": "",
     "on-click-right": "kitty -e nmtui"
+  },
+  "bluetooth": {
+    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+    "format": " ", //{status}",
+    "format-disabled": "  x", // an empty format will hide the module
+    "format-connected": " {num_connections}",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    // "on-click-right": "bluetoothctl power $(bluetoothctl show | grep -q 'Powered: yes' && echo off || echo on)",
+    "on-click": "pkill blueman-manager || blueman-manager"
   },
   "pulseaudio": {
     // "scroll-step": , // %, can be a float
